@@ -15,7 +15,7 @@ class Book:
         Function returns random book title from the books.txt
         :return:
         """
-        with open('books.txt', 'r') as file:
+        with open('data/books.txt', 'r') as file:
             content = file.read().split('\n')
             return choice(content)
 
@@ -68,7 +68,7 @@ class Book:
                                 'author': self.__get_authors(self.fake)
                             }}
 
-        print(output)
+        return output
 
 
 if __name__ == '__main__':

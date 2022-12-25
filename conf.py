@@ -16,5 +16,5 @@ class Config:
 
 
 if __name__ == '__main__':
-    cfg = Config('config.ini')
+    cfg = Config('data/config.ini')
     print(dir(cfg), cfg.MODEL)

@@ -1,5 +1,5 @@
 from random import randint, uniform, choice
-import json
+from os import path
 
 from faker import Faker
 
@@ -8,14 +8,14 @@ class Book:
 
     def __init__(self):
         self.fake = Faker('ru-RU')
+        self.books_file_path = path.join('data', 'books.txt')
 
-    @staticmethod
-    def __get_title() -> str:
+    def __get_title(self) -> str:
         """
         Function returns random book title from the books.txt
         :return:
         """
-        with open('data/books.txt', 'r') as file:
+        with open(self.books_file_path, 'r') as file:
             content = file.read().split('\n')
             return choice(content)
 
@@ -53,11 +53,15 @@ class Book:
         """
         Function returns fake book number (isbn13)
         :param fake: Faker class example
-        :return: fake isbn
+        :return: fake isbn13
         """
         return fake.isbn13()
 
-    def generate_book(self):
+    def generate_book(self) -> dict:
+        """
+        Function returns book description in dict format
+        :return: dict
+        """
         output = {'fields': {
                                 'title': self.__get_title(),
                                 'year': self.__get_random_int(1900, 2022),

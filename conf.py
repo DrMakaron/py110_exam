@@ -2,7 +2,13 @@ from configparser import ConfigParser
 
 
 class Config:
-    def __init__(self, config_file_path):
+    """
+    Class saves config parameters like self attributes.
+    """
+    def __init__(self, config_file_path: str):
+        """
+        :param config_file_path: path to config file
+        """
         config = ConfigParser(allow_no_value=True)
         config.read(config_file_path)
         sections = config.sections()
